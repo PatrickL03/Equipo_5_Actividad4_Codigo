@@ -22,6 +22,8 @@ git push -u origin main
 
 ## Opción A — Railway (con plugin de MySQL)
 
+> A diferencia de Render, Railway sí puede detectar y compilar proyectos Java/Maven automáticamente (vía Nixpacks) sin necesitar el `Dockerfile`; aun así, el `Dockerfile` incluido también funciona en Railway si se prefiere.
+
 1. Crear una cuenta gratuita en Railway y conectar el repositorio de GitHub.
 2. Agregar un servicio de base de datos **MySQL** desde el marketplace de Railway (plan gratuito).
 3. Railway genera automáticamente variables como `MYSQLHOST`, `MYSQLPORT`, `MYSQLDATABASE`, `MYSQLUSER`, `MYSQLPASSWORD`. En el servicio de la aplicación, definir las variables que usa el proyecto:
@@ -32,17 +34,21 @@ git push -u origin main
 4. Railway detecta el `pom.xml` y compila el proyecto automáticamente (Nixpacks/Java). También inyecta la variable `PORT`, que ya está soportada en `application.properties` (`server.port=${PORT:8080}`).
 5. Al finalizar el despliegue, Railway asigna un dominio gratuito `*.up.railway.app`.
 
-## Opción B — Render (Web Service + Base de datos MySQL externa gratuita)
+## Opción B — Render (usando el Dockerfile incluido)
 
-1. Crear una cuenta gratuita en Render y conectar el repositorio de GitHub.
-2. Crear un **Web Service** de tipo "Java" apuntando al repositorio; Render ejecuta `mvn clean package` y luego `java -jar target/formulario-contacto.jar` automáticamente (o se puede especificar el comando de build/start manualmente).
-3. Como Render no ofrece MySQL gratuito nativo, usar un proveedor externo gratuito de MySQL (por ejemplo, un plan gratuito de Aiven, Clever Cloud o FreeSQLDatabase) y obtener sus credenciales.
-4. En el panel de "Environment" del servicio, definir:
+> **Importante:** Render **no** ofrece un runtime nativo para Java (solo soporta nativamente Node.js/Bun, Python, Ruby, Go, Rust y Elixir). Para desplegar esta aplicación en Render es necesario usar **Docker**; el proyecto ya incluye un `Dockerfile` listo para esto en la raíz.
+
+1. Verificar que el archivo `Dockerfile` (incluido en la raíz del proyecto) esté subido al repositorio de GitHub.
+2. Crear una cuenta gratuita en Render y conectar el repositorio de GitHub.
+3. Crear un **Web Service** y, en el campo **Environment/Runtime**, seleccionar **Docker** (no "Java" ni ningún otro lenguaje). Render detecta el `Dockerfile` automáticamente.
+4. Los campos **Build Command** y **Start Command** normalmente se ocultan al elegir Docker, porque Render usa las instrucciones `RUN` y `ENTRYPOINT` del propio `Dockerfile`. Si el formulario igual los muestra como obligatorios, dejarlos vacíos o, si no lo permite, escribir `java -jar app.jar` en "Start Command".
+5. Como Render no ofrece MySQL gratuito nativo, usar un proveedor externo gratuito de MySQL (por ejemplo, un plan gratuito de Aiven, Clever Cloud o FreeSQLDatabase) y obtener sus credenciales.
+6. En el panel de "Environment" del servicio, definir:
    - `APP_ENV=production`
    - `DB_URL=jdbc:mysql://HOST:3306/NOMBRE_BD?useSSL=false&serverTimezone=UTC`
    - `DB_USERNAME=...`
    - `DB_PASSWORD=...`
-5. Render asigna un dominio gratuito `*.onrender.com`.
+7. Render asigna un dominio gratuito `*.onrender.com` y también inyecta automáticamente la variable `PORT`, que la aplicación ya lee mediante `server.port=${PORT:8080}`.
 
 ## Opción C — Servicio institucional aprobado por el docente
 
