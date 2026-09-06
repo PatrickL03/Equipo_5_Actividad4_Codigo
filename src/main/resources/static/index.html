@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulario de contacto La Salle</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="badge-ambiente" class="badge-ambiente" hidden></div>
+
+<header class="cabecera">
+    <div class="contenedor">
+        <h1>🏫 Formulario de contacto La Salle</h1>
+        <p>Escríbenos y con gusto te responderemos a la brevedad.</p>
+    </div>
+</header>
+
+<main class="contenedor">
+
+    <div id="alerta-exito" class="alerta alerta-exito" role="alert" hidden></div>
+
+    <div id="alerta-error" class="alerta alerta-error" role="alert" hidden>
+        <strong>No se pudo enviar el formulario:</strong>
+        <ul id="lista-errores"></ul>
+    </div>
+
+    <section class="tarjeta">
+        <h2>Formulario de contacto</h2>
+        <form id="formulario-contacto" novalidate>
+
+            <div class="campo">
+                <label for="nombre">Nombre *</label>
+                <input type="text" id="nombre" name="nombre" maxlength="120" placeholder="Ej. María Pérez">
+                <small class="mensaje-error" data-para="nombre"></small>
+            </div>
+
+            <div class="campo">
+                <label for="correo">Correo electrónico *</label>
+                <input type="text" id="correo" name="correo" maxlength="150" placeholder="Ej. maria@correo.com">
+                <small class="mensaje-error" data-para="correo"></small>
+            </div>
+
+            <div class="campo">
+                <label for="asunto">Asunto *</label>
+                <input type="text" id="asunto" name="asunto" maxlength="150" placeholder="Ej. Consulta sobre admisiones">
+                <small class="mensaje-error" data-para="asunto"></small>
+            </div>
+
+            <div class="campo">
+                <label for="mensaje">Mensaje *</label>
+                <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escribe aquí tu mensaje..."></textarea>
+                <small class="mensaje-error" data-para="mensaje"></small>
+            </div>
+
+            <button type="submit" class="boton-enviar" id="boton-enviar">Enviar mensaje</button>
+        </form>
+    </section>
+
+    <section id="panel-debug" class="tarjeta panel-debug" hidden>
+        <h2>🔧 Panel de depuración (solo visible en desarrollo/pruebas)</h2>
+        <ul>
+            <li><strong>Ambiente:</strong> <span id="debug-ambiente"></span></li>
+            <li><strong>Total de contactos almacenados:</strong> <span id="debug-total"></span></li>
+            <li><strong>Endpoint de la API:</strong> <code>POST /api/contacto</code></li>
+        </ul>
+    </section>
+
+</main>
+
+<footer class="pie">
+    <div class="contenedor">
+        <p>Actividad 4 — Ambientes de desarrollo, pruebas y producción · La Salle</p>
+    </div>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
