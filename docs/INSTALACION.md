@@ -12,7 +12,7 @@
 Descomprimir `Equipo_N_Actividad4_Codigo.zip`, o clonar el repositorio si ya fue subido a GitHub:
 
 ```bash
-git clone https://github.com/tu-usuario/formulario-contacto-lasalle.git
+git clone https://github.com/PatrickL03/Equipo_5_Actividad4_Codigo
 cd formulario-contacto-lasalle
 ```
 
@@ -86,7 +86,7 @@ Basta con cambiar el valor de `APP_ENV` (o del perfil de Spring) y reiniciar la 
 ## 7. Estructura de carpetas
 
 ```
-Equipo_N_Actividad4_Codigo/
+Equipo_5_Actividad4_Codigo/
 ├── pom.xml
 ├── .env.example
 ├── .gitignore

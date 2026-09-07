@@ -13,7 +13,7 @@ git init
 git add .
 git commit -m "Formulario de contacto La Salle - Actividad 4"
 git branch -M main
-git remote add origin https://github.com/tu-usuario/formulario-contacto-lasalle.git
+git remote add origin https://github.com/PatrickL03/Equipo_5_Actividad4_Codigo
 git push -u origin main
 ```
 
@@ -28,7 +28,7 @@ git push -u origin main
 2. Agregar un servicio de base de datos **MySQL** desde el marketplace de Railway (plan gratuito).
 3. Railway genera automáticamente variables como `MYSQLHOST`, `MYSQLPORT`, `MYSQLDATABASE`, `MYSQLUSER`, `MYSQLPASSWORD`. En el servicio de la aplicación, definir las variables que usa el proyecto:
    - `APP_ENV=production`
-   - `DB_URL=jdbc:mysql://${{MYSQLHOST}}:${{MYSQLPORT}}/${{MYSQLDATABASE}}?useSSL=false&serverTimezone=UTC`
+   - `DB_URL=jdbc:mysql://mysql-2a7d4ce8-samidl03-6bae.b.aivencloud.com:13572/defaultdb?useSSL=true&requireSSL=true&serverTimezone=UTC&allowPublicKeyRetrieval=true`
    - `DB_USERNAME=${{MYSQLUSER}}`
    - `DB_PASSWORD=${{MYSQLPASSWORD}}`
 4. Railway detecta el `pom.xml` y compila el proyecto automáticamente (Nixpacks/Java). También inyecta la variable `PORT`, que ya está soportada en `application.properties` (`server.port=${PORT:8080}`).
@@ -45,7 +45,7 @@ git push -u origin main
 5. Como Render no ofrece MySQL gratuito nativo, usar un proveedor externo gratuito de MySQL (por ejemplo, un plan gratuito de Aiven, Clever Cloud o FreeSQLDatabase) y obtener sus credenciales.
 6. En el panel de "Environment" del servicio, definir:
    - `APP_ENV=production`
-   - `DB_URL=jdbc:mysql://HOST:3306/NOMBRE_BD?useSSL=false&serverTimezone=UTC`
+   - `DB_URL=jdbc:mysql://mysql-2a7d4ce8-samidl03-6bae.b.aivencloud.com:13572/defaultdb?useSSL=true&requireSSL=true&serverTimezone=UTC&allowPublicKeyRetrieval=true`
    - `DB_USERNAME=...`
    - `DB_PASSWORD=...`
 7. Render asigna un dominio gratuito `*.onrender.com` y también inyecta automáticamente la variable `PORT`, que la aplicación ya lee mediante `server.port=${PORT:8080}`.
