@@ -72,6 +72,8 @@ Abrir `http://localhost:8080` en el navegador. Instrucciones completas
 - El `.gitignore` excluye `target/`, `logs/`, `.env` y archivos de configuración de IDE.
 - El proyecto se ejecuta siguiendo las instrucciones de `docs/INSTALACION.md`, sin subir dependencias descargables (Maven las resuelve desde su repositorio local/remoto, no se versionan en el zip de entrega).
 
-## Equipo
+## Equipo 5
 
-_Completar con los integrantes del equipo y el número de equipo (Equipo_N)._
+- Patrick Samid Lopez Lozano
+- Sebastian Lopez Perez
+- David Padilla Correa
