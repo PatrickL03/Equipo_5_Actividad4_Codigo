@@ -30,6 +30,7 @@ public class ContactoService {
         Contacto contacto = new Contacto();
         contacto.setNombre(request.getNombre().trim());
         contacto.setCorreo(request.getCorreo().trim());
+        contacto.setTelefono(request.getTelefono());
         contacto.setAsunto(request.getAsunto().trim());
         contacto.setMensaje(request.getMensaje().trim());
         contacto.setAmbiente(ambienteInfo.getAmbiente());
