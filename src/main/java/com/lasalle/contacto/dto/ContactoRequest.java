@@ -23,6 +23,9 @@ public class ContactoRequest {
     @Size(max = 150, message = "El correo no puede superar 150 caracteres.")
     private String correo;
 
+    @Size(max = 30, message = "El telefono no puede superar 30 caracteres.")
+    private String telefono;
+
     @NotBlank(message = "El campo \"Asunto\" es obligatorio.")
     @Size(max = 150, message = "El asunto no puede superar 150 caracteres.")
     private String asunto;
@@ -44,6 +47,13 @@ public class ContactoRequest {
 
     public void setCorreo(String correo) {
         this.correo = correo;
+    }
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public String getAsunto() {

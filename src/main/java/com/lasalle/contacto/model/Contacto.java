@@ -30,6 +30,9 @@ public class Contacto {
     @Column(nullable = false, length = 150)
     private String correo;
 
+    @Column(nullable = true, length = 30)
+    private String telefono;
+
     @Column(nullable = false, length = 150)
     private String asunto;
 
@@ -75,6 +78,14 @@ public class Contacto {
 
     public void setCorreo(String correo) {
         this.correo = correo;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public String getAsunto() {
