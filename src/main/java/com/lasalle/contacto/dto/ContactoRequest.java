@@ -2,6 +2,7 @@ package com.lasalle.contacto.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 /**
@@ -32,6 +33,18 @@ public class ContactoRequest {
 
     @NotBlank(message = "El campo \"Mensaje\" es obligatorio.")
     private String mensaje;
+
+    /**
+     * Campo OPCIONAL: puede llegar vacío. Si el usuario escribe algo, debe
+     * tener un formato razonable de teléfono (dígitos, espacios, +, -, paréntesis,
+     * entre 7 y 20 caracteres). La expresión acepta también la cadena vacía,
+     * porque @Pattern por sí sola no distingue "opcional pero con formato".
+     */
+    @Pattern(
+        regexp = "^$|^[0-9+\\-\\s()]{7,20}$",
+        message = "El formato del teléfono no es válido."
+    )
+    private String telefono;
 
     public String getNombre() {
         return nombre;
@@ -70,5 +83,13 @@ public class ContactoRequest {
 
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 }
