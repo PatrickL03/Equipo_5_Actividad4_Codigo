@@ -44,7 +44,7 @@ public class ContactoRequest {
         regexp = "^$|^[0-9+\\-\\s()]{7,20}$",
         message = "El formato del teléfono no es válido."
     )
-    private String telefono;
+    private String Telefono;
 
     public String getNombre() {
         return nombre;
@@ -85,11 +85,5 @@ public class ContactoRequest {
         this.mensaje = mensaje;
     }
 
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
+    
 }

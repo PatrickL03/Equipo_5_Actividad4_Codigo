@@ -41,7 +41,7 @@ public class Contacto {
 
     /** Campo opcional: puede llegar vacío/null, por eso nullable=true */
     @Column(nullable = true, length = 30)
-    private String telefono;
+    private String Telefono;
 
     /** Ambiente en el que se genero el registro: development | testing | production */
     @Column(nullable = false, length = 30)
@@ -106,14 +106,6 @@ public class Contacto {
 
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
     }
 
     public String getAmbiente() {
