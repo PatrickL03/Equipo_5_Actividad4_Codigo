@@ -25,10 +25,11 @@ document.addEventListener('DOMContentLoaded', function () {
     var regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     var campos = {
-        nombre: document.getElementById('nombre'),
-        correo: document.getElementById('correo'),
-        asunto: document.getElementById('asunto'),
-        mensaje: document.getElementById('mensaje')
+    nombre: document.getElementById('nombre'),
+    correo: document.getElementById('correo'),
+    telefono: document.getElementById('telefono'),
+    asunto: document.getElementById('asunto'),
+    mensaje: document.getElementById('mensaje')
     };
 
     function mostrarErrorCampo(nombreCampo, texto) {
@@ -47,14 +48,26 @@ document.addEventListener('DOMContentLoaded', function () {
     function validarCampo(nombreCampo) {
         var valor = campos[nombreCampo].value.trim();
 
+        if (nombreCampo === 'telefono' && valor === '') {
+        mostrarErrorCampo(nombreCampo, '');
+        return true;
+        }
+
         if (valor === '') {
-            mostrarErrorCampo(nombreCampo, 'Este campo es obligatorio.');
-            return false;
+        mostrarErrorCampo(nombreCampo, 'Este campo es obligatorio.');
+        return false;
         }
+
         if (nombreCampo === 'correo' && !regexCorreo.test(valor)) {
-            mostrarErrorCampo(nombreCampo, 'Ingresa un correo electrónico válido.');
-            return false;
+        mostrarErrorCampo(nombreCampo, 'Ingresa un correo electrónico válido.');
+        return false;
         }
+
+        if (nombreCampo === 'telefono' && valor.length > 30) {
+        mostrarErrorCampo(nombreCampo, 'El teléfono no puede superar 30 caracteres.');
+        return false;
+        }
+
         mostrarErrorCampo(nombreCampo, '');
         return true;
     }
@@ -95,12 +108,13 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        var datos = {
-            nombre: campos.nombre.value.trim(),
-            correo: campos.correo.value.trim(),
-            asunto: campos.asunto.value.trim(),
-            mensaje: campos.mensaje.value.trim()
-        };
+       var datos = {
+        nombre: campos.nombre.value.trim(),
+        correo: campos.correo.value.trim(),
+        telefono: campos.telefono.value.trim(),
+        asunto: campos.asunto.value.trim(),
+        mensaje: campos.mensaje.value.trim()
+       };
 
         botonEnviar.disabled = true;
         botonEnviar.textContent = 'Enviando...';

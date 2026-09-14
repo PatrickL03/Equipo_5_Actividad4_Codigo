@@ -45,6 +45,7 @@ class ContactoControllerTest {
         ContactoRequest r = new ContactoRequest();
         r.setNombre("Juan Pérez");
         r.setCorreo("juan.perez@correo.com");
+        r.setTelefono("3001234567");
         r.setAsunto("Consulta sobre proceso de admisión");
         r.setMensaje("Buenas tardes, quisiera información sobre fechas de inscripción.");
         return r;
