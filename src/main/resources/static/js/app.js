@@ -15,6 +15,7 @@
  */
 document.addEventListener('DOMContentLoaded', function () {
     cargarInformacionAmbiente();
+    cargarTotalPublico();
 
     var formulario = document.getElementById('formulario-contacto');
     var botonEnviar = document.getElementById('boton-enviar');
@@ -135,6 +136,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     alertaExito.hidden = false;
                     formulario.reset();
                     cargarInformacionAmbiente();
+                    cargarTotalPublico();
                 } else {
                     var errores = (resultado.cuerpo && resultado.cuerpo.errores)
                         ? resultado.cuerpo.errores
@@ -175,3 +177,22 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     }
 });
+
+    function cargarTotalPublico() {
+        fetch('/api/contactos/total')
+            .then(function (respuesta) { return respuesta.json(); })
+            .then(function (info) {
+                var contador = document.getElementById('contador-publico');
+                var total = info.total;
+
+                var texto = total === 1
+                ? 'Ya se ha puesto en contacto 1 persona con nosotros.'
+                : 'Ya se han puesto en contacto ' + total + ' personas con nosotros.';
+
+                contador.textContent = texto;
+                contador.hidden = false;
+            })
+            .catch(function () {
+            // Si falla el contador, el formulario sigue funcionando normalmente.
+            });
+}
