@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.lasalle.contacto.dto.TotalContactosResponse;
 
 /**
  * Expone la API REST que consume el frontend (public/ static/ index.html + app.js):
@@ -55,6 +56,13 @@ public class ContactoController {
         );
         return ResponseEntity.ok(respuesta);
     }
+
+    @GetMapping("/contactos/total")
+    public ResponseEntity<TotalContactosResponse> totalContactos() {
+    return ResponseEntity.ok(
+            new TotalContactosResponse(contactoService.contar())
+    );
+}
 
     @GetMapping("/ambiente")
     public ResponseEntity<AmbienteResponse> informacionAmbiente() {
