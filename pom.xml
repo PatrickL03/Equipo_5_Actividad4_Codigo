@@ -57,9 +57,17 @@
         </dependency>
 
         <!-- Pruebas -->
+              <!-- Pruebas automatizadas con Spring Boot y JUnit -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Base de datos H2 exclusiva para pruebas -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
