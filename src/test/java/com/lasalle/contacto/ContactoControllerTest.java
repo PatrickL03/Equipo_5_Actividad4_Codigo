@@ -135,4 +135,15 @@ void caso6_totalContactosSeActualiza() {
 
     assertThat(totalDespues).isEqualTo(totalAntes + 1);
     }
+
+   @Test
+void caso7_faviconDisponible() {
+    ResponseEntity<byte[]> respuesta = restTemplate.getForEntity(
+        "/favicon.ico", byte[].class
+    );
+
+    assertThat(respuesta.getStatusCode()).isEqualTo(HttpStatus.OK);
+    assertThat(respuesta.getBody()).isNotNull();
+    assertThat(respuesta.getBody().length).isGreaterThan(0);
+    } 
 }
