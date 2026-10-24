@@ -81,4 +81,58 @@ class ContactoControllerTest {
         assertThat(respuesta.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
         assertThat(respuesta.getBody()).contains("correo electrónico no es válido");
     }
+
+    @Test
+void caso4_telefonoOpcionalVacio() {
+    ContactoRequest solicitud = construirSolicitudValida();
+    solicitud.setTelefono("");
+
+    ResponseEntity<String> respuesta = enviarContacto(solicitud);
+
+    assertThat(respuesta.getStatusCode()).isEqualTo(HttpStatus.OK);
+    assertThat(respuesta.getBody()).contains("\"exito\":true");
+}
+
+@Test
+void caso5_telefonoConFormatoInvalido() {
+    ContactoRequest solicitud = construirSolicitudValida();
+    solicitud.setTelefono("abc123");
+
+    ResponseEntity<String> respuesta = enviarContacto(solicitud);
+
+    assertThat(respuesta.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+    assertThat(respuesta.getBody()).contains("formato del teléfono");
+    }
+
+@Test
+void caso6_totalContactosSeActualiza() {
+    ResponseEntity<com.lasalle.contacto.dto.TotalContactosResponse> antes =
+        restTemplate.getForEntity(
+            "/api/contactos/total",
+            com.lasalle.contacto.dto.TotalContactosResponse.class
+        );
+
+    assertThat(antes.getStatusCode()).isEqualTo(HttpStatus.OK);
+    assertThat(antes.getBody()).isNotNull();
+
+    long totalAntes = antes.getBody().getTotal();
+
+    ResponseEntity<String> envio =
+        enviarContacto(construirSolicitudValida());
+
+    assertThat(envio.getStatusCode()).isEqualTo(HttpStatus.OK);
+
+    ResponseEntity<com.lasalle.contacto.dto.TotalContactosResponse> despues =
+        restTemplate.getForEntity(
+            "/api/contactos/total",
+            com.lasalle.contacto.dto.TotalContactosResponse.class
+        );
+
+    assertThat(despues.getStatusCode()).isEqualTo(HttpStatus.OK);
+    assertThat(despues.getBody()).isNotNull();
+
+    long totalDespues = despues.getBody().getTotal();
+
+    assertThat(totalDespues).isEqualTo(totalAntes + 1);
+    }
 }

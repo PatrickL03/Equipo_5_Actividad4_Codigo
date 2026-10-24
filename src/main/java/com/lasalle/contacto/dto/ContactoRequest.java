@@ -24,10 +24,7 @@ public class ContactoRequest {
     @Size(max = 150, message = "El correo no puede superar 150 caracteres.")
     private String correo;
 
-    @Size(max = 30, message = "El telefono no puede superar 30 caracteres.")
-    private String telefono;
-
-    @NotBlank(message = "El campo \"Asunto\" es obligatorio.")
+        @NotBlank(message = "El campo \"Asunto\" es obligatorio.")
     @Size(max = 150, message = "El asunto no puede superar 150 caracteres.")
     private String asunto;
 
@@ -35,16 +32,15 @@ public class ContactoRequest {
     private String mensaje;
 
     /**
-     * Campo OPCIONAL: puede llegar vacío. Si el usuario escribe algo, debe
-     * tener un formato razonable de teléfono (dígitos, espacios, +, -, paréntesis,
-     * entre 7 y 20 caracteres). La expresión acepta también la cadena vacía,
-     * porque @Pattern por sí sola no distingue "opcional pero con formato".
-     */
+    * Teléfono opcional. Si se proporciona, debe tener entre
+    * 7 y 20 caracteres permitidos.
+    */
+    @Size(max = 30, message = "El teléfono no puede superar 30 caracteres.")
     @Pattern(
         regexp = "^$|^[0-9+\\-\\s()]{7,20}$",
         message = "El formato del teléfono no es válido."
     )
-    private String Telefono;
+    private String telefono;
 
     public String getNombre() {
         return nombre;
