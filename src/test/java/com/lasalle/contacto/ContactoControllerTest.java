@@ -55,9 +55,14 @@ class ContactoControllerTest {
     void caso1_envioCorrectoDelFormulario() {
         ResponseEntity<String> respuesta = enviarContacto(construirSolicitudValida());
 
+            System.out.println("I01 - Código HTTP: "
+                + respuesta.getStatusCode().value());
+
         assertThat(respuesta.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(respuesta.getBody()).contains("\"exito\":true");
         assertThat(respuesta.getBody()).contains("se envió correctamente");
+
+        System.out.println("I01 - Registro de contacto: APROBADO");
     }
 
     @Test
@@ -133,7 +138,10 @@ void caso6_totalContactosSeActualiza() {
 
     long totalDespues = despues.getBody().getTotal();
 
+    System.out.println("I02 - Total después: " + totalDespues);
+
     assertThat(totalDespues).isEqualTo(totalAntes + 1);
+    System.out.println("I02 - Incremento de una unidad: APROBADO");
     }
 
    @Test

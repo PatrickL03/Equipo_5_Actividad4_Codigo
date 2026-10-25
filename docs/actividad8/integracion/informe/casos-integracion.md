@@ -1,18 +1,27 @@
+# Casos de pruebas de integración
 
-I01:
+## I01 — Registro correcto del contacto
 
-Objetivo: verificar el registro correcto de un contacto.
+**Resultado obtenido:** La solicitud de contacto fue procesada correctamente mediante el método de prueba `caso1_envioCorrectoDelFormulario`. Se obtuvo HTTP 200, la respuesta cumplió las validaciones de éxito y los logs confirmaron que el contacto fue almacenado correctamente.
 
-Datos: nombre Juan Pérez, correo válido, teléfono 3001234567, asunto y mensaje completos.
+**Estado:** APROBADO.
 
-Resultado esperado: respuesta HTTP 200 y registro almacenado correctamente.
+**Evidencias:**
+- Código de la prueba: `evidencias/Caso1.jpg`
+- Resultado de ejecución: `evidencias/TestI01.jpg`
 
-I02:
+## I02 — Actualización del contador de contactos
 
-Objetivo: verificar que el contador cambie después de registrar un nuevo contacto.
+**Resultado obtenido:** La prueba `caso6_totalContactosSeActualiza` consultó el contador antes y después de registrar un contacto. El total inicial fue 0 y el total final fue 1. La aserción `totalDespues == totalAntes + 1` se cumplió.
 
-Resultado esperado: HTTP 200 y totalDespues = totalAntes + 1.
+**Estado:** APROBADO.
 
-El controlador recibe la solicitud HTTP y delega el registro al servicio. El servicio utiliza el repositorio JPA para guardar los datos en H2. El endpoint del contador consulta la cantidad de registros mediante el repositorio y devuelve el total actualizado.
+**Evidencias:**
+- Código de la prueba: `evidencias/Caso6.jpg`
+- Resultado de ejecución: `evidencias/TestI02.jpg`
 
+## Resultado general
 
+Se ejecutaron 2 pruebas de integración, con 0 fallos y 0 errores. La ejecución finalizó con `BUILD SUCCESS`.
+
+**Evidencia general:** `evidencias/ResultadoTest.jpg`
