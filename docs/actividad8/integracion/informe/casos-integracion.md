@@ -22,6 +22,17 @@
 
 ## Resultado general
 
-Se ejecutaron 2 pruebas de integración, con 0 fallos y 0 errores. La ejecución finalizó con `BUILD SUCCESS`.
+Se ejecutaron dos pruebas de integración automatizadas
+correspondientes a los casos I01 e I02.
 
-**Evidencia general:** `evidencias/ResultadoTest.jpg`
+- Pruebas ejecutadas: 2.
+- Fallos: 0.
+- Errores: 0.
+- Resultado de Maven: `BUILD SUCCESS`.
+
+Los resultados fueron registrados por Patrick López durante
+la ejecución de las pruebas de integración con Spring Boot,
+JUnit 5 y H2.
+
+Las evidencias de código y ejecución se encuentran
+en la carpeta `evidencias/`.
