@@ -16,12 +16,12 @@ Diseñar, ejecutar y documentar seis casos de prueba correspondientes a tres niv
 
 | ID | Tipo | Nombre | Responsable | Estado |
 |---|---|---|---|---|
-| U01 | Unitaria | Teléfono con formato válido | David | Aprobado |
-| U02 | Unitaria | Teléfono con formato inválido | David | Aprobado |
-| I01 | Integración | Registro de contacto | Patrick | Pendiente de ejecución individual |
-| I02 | Integración | Actualización del contador | Patrick | Pendiente de ejecución individual |
-| F01 | Funcional | Envío exitoso del formulario | Sebastián | Pendiente |
-| F02 | Funcional | Validación de correo inválido | Sebastián | Pendiente |
+| U01 | Unitaria | Teléfono con formato válido | David | APROBADO |
+| U02 | Unitaria | Teléfono con formato inválido | David | APROBADO |
+| I01 | Integración | Registro de contacto | Patrick | APROBADO |
+| I02 | Integración | Actualización del contador | Patrick | APROBADO |
+| F01 | Funcional | Envío exitoso del formulario | Sebastián | APROBADO |
+| F02 | Funcional | Validación de correo inválido | Sebastián | APROBADO |
 
 ## Resultados unitarios confirmados
 
@@ -133,11 +133,11 @@ Repositorio: https://github.com/PatrickL03/Equipo_5_Actividad4_Codigo
 
 **Resultado esperado:** Solicitud procesada y contacto registrado correctamente.
 
-**Resultado obtenido:** Pendiente de ejecución individual de Patrick.
+**Resultado obtenido:** Se obtuvo HTTP 200 y una respuesta exitosa. El informe de Patrick indica que los registros de ejecución confirmaron el almacenamiento del contacto.
 
-**Estado:** PENDIENTE.
+**Estado:** APROBADO.
 
-**Evidencia:** Pendiente.
+**Evidencia:** integracion/evidencias/Caso1.jpg y integracion/evidencias/TestI01.jpg.
 
 ## I02 - Actualización del contador de contactos
 
@@ -160,11 +160,11 @@ Repositorio: https://github.com/PatrickL03/Equipo_5_Actividad4_Codigo
 
 **Resultado esperado:** totalDespues = totalAntes + 1.
 
-**Resultado obtenido:** Pendiente de ejecución individual de Patrick.
+**Resultado obtenido:** Patrick documentó un total inicial de 0 y uno final de 1, cumpliendo la condición totalDespues = totalAntes + 1.
 
-**Estado:** PENDIENTE.
+**Estado:** APROBADO.
 
-**Evidencia:** Pendiente.
+**Evidencia:** integracion/evidencias/Caso6.jpg y integracion/evidencias/TestI02.jpg.
 
 ## F01 - Envío exitoso del formulario
 
@@ -187,11 +187,11 @@ Repositorio: https://github.com/PatrickL03/Equipo_5_Actividad4_Codigo
 
 **Resultado esperado:** El sistema informa que el mensaje fue enviado correctamente.
 
-**Resultado obtenido:** Pendiente de ejecución de Sebastián.
+**Resultado obtenido:** Sebastián documentó una confirmación de envío exitoso y un incremento del contador de 0 a 1.
 
-**Estado:** PENDIENTE.
+**Estado:** APROBADO.
 
-**Evidencia:** Pendiente.
+**Evidencia:** funcionales/evidencias/F01_datos_validos.png y funcionales/evidencias/F01_confirmacion.png.
 
 ## F02 - Validación de correo inválido
 
@@ -215,9 +215,9 @@ Repositorio: https://github.com/PatrickL03/Equipo_5_Actividad4_Codigo
 
 **Resultado esperado:** El sistema rechaza el correo inválido y presenta una indicación de validación.
 
-**Resultado obtenido:** Pendiente de ejecución de Sebastián.
+**Resultado obtenido:** Según el informe funcional, el formulario rechazó el correo inválido y presentó un mensaje de validación, sin registrar un nuevo contacto.
 
-**Estado:** PENDIENTE.
+**Estado:** APROBADO.
 
-**Evidencia:** Pendiente.
+**Evidencia:** funcionales/evidencias/F02_correo_invalido.png y funcionales/evidencias/F02_mensaje_validacion.png.
 
